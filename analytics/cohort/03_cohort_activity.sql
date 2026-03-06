@@ -25,8 +25,7 @@ SELECT
 	customer_key,
 	to_date(cohort_month, 'YYYY-MM'),
 	purchase_month,
-	EXTRACT(YEAR FROM age(purchase_month, to_date(cohort_month, 'YYYY-MM'))) * 12
-      + EXTRACT(MONTH FROM age(purchase_month, to_date(cohort_month, 'YYYY-MM')))AS cohort_index
+	resta_meses(to_date(cohort_month, 'YYYY-MM'), purchase_month) AS cohort_index
 	
 FROM
 	customer_purchases;
